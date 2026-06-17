@@ -1,0 +1,99 @@
+---
+title: "Account settings"
+description: "Manage your profile, password, and appearance."
+icon: "settings"
+---
+
+Account settings is where you manage your personal details and how the app looks. These settings are tied to your user account, not to a brand, so they follow you wherever you work.
+
+<Frame caption="The Profile tab under settings, where you update your name and email.">
+  <img src="/images/app/settings-profile.png" alt="MentionScout profile settings showing name and email fields" />
+</Frame>
+
+## Opening settings
+
+Settings has its own left nav, separate from the main app sidebar. It lists:
+
+- **Profile** at `/settings/profile`
+- **Password** at `/settings/password`
+- **AI access** at `/settings/ai-access`
+- **Appearance** at `/settings/appearance`
+- **Listening** at `/settings/listening`
+
+Click **Back to Dashboard** at the top of the settings nav to return to the app.
+
+This page covers **Profile**, **Password**, and **Appearance**. AI access and Listening are documented separately (see the cards at the end).
+
+## Profile
+
+The **Profile** tab holds your name and email address.
+
+<Steps>
+  <Step title="Edit your details">
+    Update the **Name** and **Email address** fields. Both are required.
+  </Step>
+  <Step title="Save">
+    Click **Save**. A **Saved** confirmation appears briefly once the change is stored.
+  </Step>
+</Steps>
+
+<Note>
+  If you change your email address, the new address starts out unverified. When email verification is in effect, the Profile tab shows a "Your email address is unverified" message with a link to re-send the verification email.
+</Note>
+
+### Delete account
+
+Lower on the Profile tab is a **Delete account** section.
+
+<Warning>
+  Deleting your account is permanent. All of its resources and data are removed and this cannot be undone.
+</Warning>
+
+To delete your account, click **Delete account**, then enter your password in the confirmation dialog and confirm. Click **Cancel** to back out.
+
+## Password
+
+The **Password** tab lets you set a new password for your account.
+
+<Steps>
+  <Step title="Enter your current password">
+    Type your existing password in the **Current password** field.
+  </Step>
+  <Step title="Set a new password">
+    Enter the new password in **New password**, then repeat it in **Confirm password**.
+  </Step>
+  <Step title="Save">
+    Click **Save password**. A **Saved** confirmation appears when the update succeeds.
+  </Step>
+</Steps>
+
+<Tip>
+  Use a long, random password to keep your account secure. If the current password is wrong or the two new-password fields do not match, the form shows an inline error and your entries are cleared so you can try again.
+</Tip>
+
+## Appearance
+
+The **Appearance** tab controls the app's theme.
+
+<Frame caption="The Appearance tab, where you switch between Light, Dark, and System themes.">
+  <img src="/images/app/settings-appearance.png" alt="MentionScout appearance settings with Light, Dark, and System options" />
+</Frame>
+
+Pick one of three options:
+
+- **Light** uses the light theme.
+- **Dark** uses the dark theme.
+- **System** follows your device's theme setting and switches automatically when it does.
+
+Your choice applies immediately, with no Save button. The setting is stored per device, so each browser or computer you sign in from keeps its own preference.
+
+## Related settings
+
+<CardGroup cols={2}>
+  <Card title="AI access (MCP)" icon="bot" href="/mcp/overview">
+    Connect MentionScout to AI tools through the Model Context Protocol and manage access tokens.
+  </Card>
+  <Card title="Listening" icon="radio" href="/community/listening">
+    Configure social listening across Reddit, Hacker News, and Bluesky.
+  </Card>
+</CardGroup>

@@ -1,47 +1,112 @@
 ---
 title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+description: "Add your first website and get your first AI visibility results."
+icon: "rocket"
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+The first time you sign in, MentionScout walks you through a short guided setup. You add one website, MentionScout analyzes it in the background, and then you confirm the competitors and prompts it suggests. The whole flow takes a few minutes.
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+<Frame caption="The guided onboarding flow: add a website, then confirm your brand, competitors, and prompts.">
+  <img src="/images/app/onboarding.png" alt="MentionScout onboarding flow showing the add-website step" />
+</Frame>
 
-## Prerequisites
+## What you set up
 
-Before you begin, you must have:
+The flow has four parts, shown as a 5-step progress bar at the top of each screen.
 
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
+<CardGroup cols={2}>
+  <Card title="Your first website" icon="globe">
+    The brand and domain MentionScout watches for in AI answers.
+  </Card>
+  <Card title="Brand details" icon="building">
+    Names, description, and an ideal-customer persona that sharpen later suggestions.
+  </Card>
+  <Card title="Competitors" icon="users">
+    The rivals you want to compare against in AI recommendations.
+  </Card>
+  <Card title="Prompts" icon="message-square">
+    The questions your buyers ask AI models, which MentionScout runs on a schedule.
+  </Card>
+</CardGroup>
 
-## Get started
+## Add your first website
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
+  <Step title="Name your workspace">
+    The **Workspace name** field is pre-filled for you. Keep it or change it. A workspace holds your websites, prompts, and results.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
-
-    ```bash
-    your-cli init
-    ```
+  <Step title="Add the website">
+    Under **Your first website**, fill in **Name** (for example `Acme`) and **Domain** (for example `acme.com`). This is the brand and domain MentionScout watches for in AI answers.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
-
-    ```bash
-    your-cli start
-    ```
+  <Step title="Continue">
+    Click **Continue**. MentionScout creates the website and starts analyzing it in the background.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+<Note>
+  You only add one website here. You can add more later from **Setup**.
+</Note>
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
+## Let MentionScout analyze the site
+
+After you click **Continue**, an **Analyzing your website** dialog appears while MentionScout reads your homepage and drafts a brand profile. This usually finishes in 30 to 60 seconds, and the page advances on its own when each stage completes.
+
+<Tip>
+  If a stage runs long, the dialog shows the elapsed time and a **Restart this step** button. If analysis fails outright, you can **Retry**, fill the details in by hand, or **Skip** the step and continue.
 </Tip>
+
+## Confirm your brand details
+
+When the analysis finishes, the **Brand** form opens, pre-filled with what MentionScout found. Review and adjust:
+
+- **Brand name** and **Brand aliases**, the alternative names or spellings that should also count as a mention.
+- **Short description**, **Industry**, **Tone of voice**, and a longer **Description** used to generate competitor and prompt suggestions.
+- **Key features**, at least three specific things your product or service does.
+- A **Persona** describing your ideal customer (name, description, age range, and education level), which sharpens the prompt suggestions.
+
+When the details look right, click **Save & find competitors**. MentionScout then suggests competitors in the background.
+
+<Note>
+  You can revisit every one of these fields later from the [Brand Hub](/setup/brand-hub).
+</Note>
+
+## Review competitors
+
+The **Competitors** step lists the rivals MentionScout suggested. Each row has a competitor name and an optional domain.
+
+- Edit, remove, or add rows. Click **Add competitor** for each new one.
+- For best results, list at least five competitors.
+
+Click **Save & generate prompts** to continue. MentionScout drafts prompts based on your brand and competitors.
+
+## Confirm your prompts
+
+The **Prompts to monitor** step lists the questions your customers ask AI models. List at least three. For each prompt you can set two tags:
+
+- **Type**: `Organic`, `Competitor comparison`, or `Brand specific`.
+- **Intent**: `Informational`, `Commercial`, `Branded`, `Comparison`, `Transactional`, or `Local`.
+
+Edit the wording, click **Add prompt** to write your own, and remove any you do not want. When you are happy, click **Finish setup**.
+
+## What happens next
+
+Finishing setup takes you to the **Dashboard**. Your prompts are scheduled to run daily, and as those runs complete, results fill in across the **AI Visibility** section of the sidebar:
+
+- **Runs** records each time a prompt is sent to the AI models.
+- **Mentions** shows where your brand was named in those answers.
+- **Citations** shows which pages the models linked to.
+
+<CardGroup cols={2}>
+  <Card title="Core concepts" icon="book-open" href="/concepts">
+    The mental model behind prompts, runs, mentions, and citations.
+  </Card>
+  <Card title="Brand Hub" icon="building" href="/setup/brand-hub">
+    Refine the brand profile that powers your suggestions.
+  </Card>
+  <Card title="Prompts" icon="message-square" href="/ai-visibility/prompts">
+    Manage the questions MentionScout runs against the AI models.
+  </Card>
+  <Card title="Runs" icon="play" href="/ai-visibility/runs">
+    See each prompt run and the answers it returned.
+  </Card>
+</CardGroup>

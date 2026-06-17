@@ -1,0 +1,98 @@
+---
+title: "Answer gap"
+description: "Prompts where competitors show up but you do not."
+icon: "target"
+---
+
+The **Answer Gap** page finds the prompts where AI answer engines name your competitors but never name you. It ranks them by how much they hurt your visibility, so you get a prioritized to-do list for the content that needs work most.
+
+<Frame caption="The Answer Gap list, ranked by how many runs named a competitor while your brand was absent.">
+  <img src="/images/app/answer-gap.png" alt="The MentionScout Answer Gap page listing prompts where competitors were mentioned but the brand was not" />
+</Frame>
+
+## What counts as a gap
+
+A prompt shows up here only when all three of these are true for the selected time range:
+
+- It has at least one completed run.
+- Your brand was **not** named in any of those runs.
+- At least one of those runs named a competitor.
+
+If you were mentioned even once in the range, the prompt is not a gap and it drops off the list. So every prompt you see is a place where rivals are winning the answer outright and you are absent.
+
+<Note>
+  Only prompts that count toward your visibility stats are scanned. Prompts you have excluded from stats never appear here.
+</Note>
+
+## How the list is ranked
+
+Gaps are ordered by how many runs named a competitor while you were missing. The prompt where competitors showed up in the most runs sits at the top, because that is the answer you are losing most consistently. Work the list from the top down.
+
+## What each row shows
+
+<AccordionGroup>
+  <Accordion title="The prompt" icon="message-square">
+    The prompt text, shown as a link. Click it to open that prompt and review its runs, mentions, and answers in full.
+  </Accordion>
+  <Accordion title="Type and intent" icon="tag">
+    Two badges carry over from the Prompts page. The first is the prompt's type (for example `Organic` or `Competitor comparison`); the second is its intent (for example `Informational`, `Commercial`, or `Comparison`). Together they tell you what kind of question is exposing the gap.
+  </Accordion>
+  <Accordion title="Runs that named a competitor" icon="hashtag">
+    A count in the form `4 of 5 runs mentioned a competitor`. The first number is how many runs named at least one rival; the second is the total runs in range. The closer the two numbers, the more reliably the answer goes to a competitor.
+  </Accordion>
+  <Accordion title="Which competitors" icon="users">
+    A badge for each competitor that was named, with its logo, name, and a `×N` count of how many runs mentioned it. Competitors are ordered by that count, most-mentioned first. Hover a badge to see the exact run count.
+  </Accordion>
+</AccordionGroup>
+
+## Change the time range
+
+Use the **Last 30 days** dropdown in the top right to switch the window.
+
+<Steps>
+  <Step title="Open the range picker">
+    Click the **Last 30 days** button.
+  </Step>
+  <Step title="Pick a window">
+    Choose **Last 7 days**, **Last 30 days**, or **Last 90 days**. The list refreshes for the new range.
+  </Step>
+</Steps>
+
+A shorter window shows where you are losing right now. A longer window smooths out one-off runs and surfaces gaps that keep recurring.
+
+## Turn a gap into action
+
+Each gap points at a specific question your competitors are answering in AI results and you are not. Use the row to decide what to do.
+
+<Steps>
+  <Step title="Start at the top">
+    Open the highest-ranked prompt. It is the one costing you the most answers.
+  </Step>
+  <Step title="Read the competitor answers">
+    Click the prompt to open it, then read the runs where a rival was named. See how the answer frames them and what it credits them for.
+  </Step>
+  <Step title="Close the gap with content">
+    Publish or improve content that answers that prompt clearly, so the next runs have a reason to name you. Then watch the prompt drop off this list as your brand starts to appear.
+  </Step>
+</Steps>
+
+<Tip>
+  An empty Answer Gap page is a good sign. It means that for the range you picked, you are being named everywhere your competitors are (or there are not enough runs yet to judge).
+</Tip>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Prompts" icon="message-square" href="/ai-visibility/prompts">
+    The questions MentionScout runs against AI answer engines on your behalf.
+  </Card>
+  <Card title="Competitors" icon="users" href="/setup/competitors">
+    Manage the rivals MentionScout watches for in answers. Your competitor list defines what counts as a gap.
+  </Card>
+  <Card title="Mentions" icon="message-square-quote" href="/ai-visibility/mentions">
+    See every time you or a competitor was named, with the surrounding answer text.
+  </Card>
+  <Card title="Runs" icon="play" href="/ai-visibility/runs">
+    Open the full answers behind any prompt to see exactly how rivals were framed.
+  </Card>
+</CardGroup>

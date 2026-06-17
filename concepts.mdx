@@ -1,0 +1,132 @@
+---
+title: "How MentionScout works"
+description: "The core concepts: prompts, runs, mentions vs citations, and the crawl-to-click funnel."
+icon: "compass"
+---
+
+MentionScout tracks how your brand shows up when people ask AI answer engines questions. You tell it what questions to watch, it runs those questions against the major models on a schedule, and it records every time your brand is named or your pages are cited. This page explains the model so the rest of the docs make sense.
+
+<Frame caption="The Visibility overview is the dashboard you land on. It rolls up your standing across every prompt, run, mention, and citation in the selected window.">
+  <img src="/images/app/dashboard.png" alt="The MentionScout dashboard showing the Visibility overview with visibility score, sentiment, competitor heatmap, and cited sources" />
+</Frame>
+
+## The core model
+
+Four things connect in a chain. Everything in the app is a view on one of them.
+
+<Steps>
+  <Step title="Prompts">
+    A **prompt** is a question you want to track, like `best CRM for small teams`. It is the real wording your buyers type into AI. You keep a list of prompts per brand.
+  </Step>
+  <Step title="Runs">
+    A **run** is one prompt answered by one model at one point in time. MentionScout sends each prompt to the answer engines you picked (ChatGPT, Claude, Gemini, Perplexity, Grok, Google AI Overviews, Google AI Mode) on a schedule, and stores the full answer.
+  </Step>
+  <Step title="Mentions and citations">
+    From each answer, MentionScout extracts two distinct things: **mentions** (your brand named in the text) and **citations** (URLs the answer links as sources). These are not the same thing, which is the most important distinction to understand below.
+  </Step>
+</Steps>
+
+So the flow is: **you track prompts -> MentionScout runs them on a schedule -> each run produces mentions and citations.** Your visibility score, sentiment, and competitor comparisons are all aggregates over those runs.
+
+## Prompts run on a schedule
+
+Each prompt has a frequency of `daily`, `weekly`, or `monthly`, and MentionScout schedules the next run accordingly. You can also run any prompt on demand and see results within a minute or two.
+
+Prompts have a type that shapes how they are read:
+
+| Prompt type | What it captures |
+| --- | --- |
+| Organic | Category questions where you hope to appear (no brand named). |
+| Competitor | Comparison questions that pit brands against each other. |
+| Brand specific | Questions that name your brand directly. |
+
+<Note>
+Brand-specific prompts stay tracked, but they are left out of your headline visibility score so they do not inflate it. A question that already names your brand is not a fair test of whether AI surfaces you on its own.
+</Note>
+
+<Card title="Prompts" icon="sparkles" href="/ai-visibility/prompts">
+Build and schedule the questions MentionScout watches for you.
+</Card>
+
+## Mentions vs citations
+
+This is the distinction the whole product hinges on, so it is worth being precise.
+
+<CardGroup cols={2}>
+  <Card title="Mention" icon="message-square-quote">
+    Your **brand name appears in the answer text**. The model talked about you. A mention carries the surrounding context and a sentiment (positive, neutral, or negative).
+  </Card>
+  <Card title="Citation" icon="quote">
+    A **URL is listed as a source** the answer drew on. When that URL is one of your own pages, it counts as a citation of your domain.
+  </Card>
+</CardGroup>
+
+A single run can produce any combination of the two:
+
+- **Mention, no citation:** the answer says good things about you but links someone else's page as the source.
+- **Citation, no mention:** the answer links one of your pages but never names your brand in the prose.
+- **Both:** the answer names you and cites your page. This is the strongest result.
+- **Neither:** you did not show up in that answer at all.
+
+Tracking them separately is what lets you see, for example, that AI recommends you (mentions) but sends readers to a competitor's page for the details (citations). Mentions and citations each have their own page in **AI Visibility**.
+
+<CardGroup cols={2}>
+  <Card title="Mentions" icon="message-square-quote" href="/ai-visibility/mentions">
+  Every time a model named your brand, with context and sentiment.
+  </Card>
+  <Card title="Citations" icon="quote" href="/ai-visibility/citations">
+  Every URL models cited, including which of your own pages they linked.
+  </Card>
+</CardGroup>
+
+## How the app is organized
+
+The sidebar groups features into three ideas. Knowing the mental model makes the navigation obvious.
+
+<AccordionGroup>
+  <Accordion title="AI Visibility: your standing inside AI answers" icon="target">
+    The answer pipeline plus the crawl-to-click funnel. This is **Prompts**, **Runs**, **Mentions**, **Citations**, **Answer Gap**, and **Crawler Analytics**. Start here to see whether AI surfaces you and what it says.
+  </Accordion>
+  <Accordion title="Community: the wider web that feeds AI" icon="network">
+    AI answers are built from public conversation. **Sources** and **Listening** track where your category is discussed on Reddit, Hacker News, and Bluesky, including which of those threads AI then cites.
+  </Accordion>
+  <Accordion title="Setup: your brand configuration" icon="wand-sparkles">
+    **Brand Hub** and **Competitors** define who you are and who you measure against. Everything else compares your numbers to the competitors you list here.
+  </Accordion>
+</AccordionGroup>
+
+## The Visibility overview
+
+The dashboard rolls all of this up for the brand and time window you pick. Use the range control at the top right to switch between the last 7, 30, or 90 days.
+
+The three headline numbers at the top are:
+
+- **Visibility score:** the share of completed runs that mentioned your brand, as a percentage.
+- **Sentiment score:** how positive the model was when it did mention you, on a 0 to 100 scale. It reads `n/a` until you have at least one mention.
+- **Runs:** how many runs completed in the window.
+
+Below those, the dashboard breaks the picture down:
+
+- **Brand visibility** charts your share of runs against each competitor you track.
+- **Sentiment when mentioned** splits sentiment by prompt type and trends it over time.
+- **Competitor visibility heatmap** shows visibility percent for you and each competitor on every model, side by side, so you can spot the engines where a rival outranks you.
+- **Visibility over time** trends your daily share of mentioning runs.
+- **Top cited domains** and **Top ranked URLs** list the sources models lean on, and which of your own pages get cited.
+- **Recent mentions** and **Recent social mentions** surface the latest hits from AI answers and from the community.
+
+<Tip>
+A new brand starts empty. Add prompts and run them, and the dashboard fills in within a minute or two. Until your first runs land, the cards show a short hint instead of data.
+</Tip>
+
+## The crawl-to-click funnel
+
+Mentions and citations tell you what AI says. The funnel tells you what happens around it: AI crawlers fetch your pages, models cite some of them in answers, and readers click through to your site. The **Crawler activity** card on the dashboard summarizes the last 30 days as two numbers:
+
+- **AI crawls:** how often AI assistants fetched your pages.
+- **AI-referral clicks:** how many visits those AI answers sent back to you.
+
+Together with citations, this closes the loop from "AI read my page" to "AI cited my page" to "a person clicked through." Connect it once and it runs on its own.
+
+<Card title="Crawler Analytics" icon="radar" href="/ai-visibility/crawler-analytics">
+See which AI assistants crawl your site and the clicks they send back.
+</Card>

@@ -1,0 +1,104 @@
+---
+title: "Competitors"
+description: "Track competitors so you can compare visibility head to head."
+icon: "users"
+---
+
+Competitors are the rival brands MentionScout watches for inside AI answers. Once you list them, every comparison view in the app can show your standing next to theirs.
+
+<Frame caption="The Competitors tab in Brand Hub, where you suggest, add, and remove rivals.">
+  <img src="/images/app/competitors.png" alt="The Competitors tab in Brand Hub showing a list of competitor brands with names, domains, and descriptions." />
+</Frame>
+
+## Where competitors live
+
+Competitors are part of your brand configuration, so you manage them on the **Competitors** tab inside [Brand Hub](/setup/brand-hub). Open Brand Hub for a website, then select the **Competitors** tab. The tab label shows the current count, for example **Competitors (5)**.
+
+MentionScout proposes an initial list automatically during brand analysis, so the tab is rarely empty after onboarding. From there you refine it: add the rivals you care about and remove the ones you do not.
+
+<Note>
+Competitors are scoped to a single brand. Each website has its own competitor list.
+</Note>
+
+## What competitors power
+
+The brands on this list are detected alongside your own whenever MentionScout reads an AI answer. That comparison feeds several views:
+
+<CardGroup cols={2}>
+  <Card title="Competitor visibility heatmap" icon="grid-2">
+    The dashboard heatmap shows, at a glance, each brand's visibility on every AI model.
+  </Card>
+  <Card title="Share of voice" icon="chart-pie">
+    See how much of the AI conversation you own versus each competitor.
+  </Card>
+  <Card title="Answer gap" icon="circle-half-stroke" href="/ai-visibility/answer-gap">
+    Find prompts where a competitor is named but you are not.
+  </Card>
+</CardGroup>
+
+A complete, accurate list makes all three more useful. If a key rival is missing, your share of voice and answer gap will understate the competition.
+
+## Let MentionScout suggest competitors
+
+The fastest way to build the list is to let the app propose rivals based on your brand.
+
+<Steps>
+  <Step title="Open the Competitors tab">
+    In Brand Hub, select the **Competitors** tab.
+  </Step>
+  <Step title="Click Suggest more">
+    Click **Suggest more**. MentionScout reads your brand details and proposes competitors in the same space. The button reads **Suggesting...** while it works.
+  </Step>
+  <Step title="Review the results">
+    New suggestions appear in the list, each with a name and, where known, a domain and short description. Suggestions that duplicate a competitor you already have are skipped automatically.
+  </Step>
+</Steps>
+
+<Tip>
+You can click **Suggest more** again at any time to top up the list as your market changes. It adds new names without disturbing the ones you already have.
+</Tip>
+
+If you have no competitors yet, the tab shows a prompt to click **Suggest more** or add one manually.
+
+## Add a competitor manually
+
+When you already know a rival you want to track, add it yourself.
+
+<Steps>
+  <Step title="Click Add competitor">
+    On the **Competitors** tab, click **Add competitor** to open the form.
+  </Step>
+  <Step title="Enter the details">
+    Fill in the fields:
+
+    | Field | Required | Notes |
+    | --- | --- | --- |
+    | **Name** | Yes | The competitor's brand name. This is what MentionScout matches in answers. |
+    | **Domain** | No | Their website, for example `example.com`. Used to show the competitor's logo. |
+    | **Aliases** | No | Other names the brand goes by. Enter one per line or comma-separated. |
+  </Step>
+  <Step title="Save">
+    Click **Add competitor**. The new entry appears in the list right away.
+  </Step>
+</Steps>
+
+<Note>
+Aliases matter when a brand is known by more than one name. MentionScout treats the name and every alias as a match term, so adding common variants improves detection in AI answers.
+</Note>
+
+## Remove a competitor
+
+To stop tracking a rival, click the trash icon on its row. A confirmation dialog asks you to confirm before the competitor is removed from this brand's list. Click **Remove** to delete it.
+
+Removing a competitor stops it from being counted in future comparisons. Add it back at any time if your priorities change.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Brand Hub" icon="building" href="/setup/brand-hub">
+    Configure the brand details that drive competitor suggestions and detection.
+  </Card>
+  <Card title="Answer gap" icon="circle-half-stroke" href="/ai-visibility/answer-gap">
+    See the prompts where competitors win and you are absent.
+  </Card>
+</CardGroup>

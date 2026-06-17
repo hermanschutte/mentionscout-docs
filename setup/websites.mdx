@@ -1,0 +1,110 @@
+---
+title: "Websites and workspaces"
+description: "Manage the websites you track and switch between workspaces."
+icon: "panels-top-left"
+---
+
+A website is the brand MentionScout tracks across AI answer engines and the wider web. Everything else in the app, from prompts and runs to mentions, citations, and crawler analytics, hangs off the website you have active.
+
+<Frame caption="The Websites list shows every brand in your workspace, with prompt and competitor counts and an analysis status.">
+  <img src="/images/app/websites.png" alt="The Websites list with name, domain, prompt count, competitor count, and status columns" />
+</Frame>
+
+## The websites list
+
+Open the website switcher at the top of the sidebar and choose **Manage websites** to see every website in your current workspace. The table lists:
+
+| Column | What it shows |
+| --- | --- |
+| **Website** | The website name and its `domain`, with a favicon. Click the name to open that website and switch to it. |
+| **Prompts** | How many prompts you track for the website. |
+| **Competitors** | How many competitors you have added. |
+| **Status** | The brand analysis status. |
+
+The **Status** column shows a `Ready` badge once analysis is complete, `Failed` if it could not finish, and a progress label (such as `Pending`) while it runs.
+
+Use the **Filter by name** box above the table to narrow a long list, and the view options menu to show or hide columns.
+
+<Tip>
+Each row has a **...** menu with quick actions: **Switch to website**, **Open Brand Hub**, **Edit**, and **Delete**.
+</Tip>
+
+## Add a website
+
+You can add a website in two ways. The quick add gets you tracking in seconds; the detailed form lets you fill in brand details up front.
+
+<Tabs>
+  <Tab title="Quick add (recommended)">
+    Click **Add website** at the top right of the list, or **Add website** in the website switcher at the top of the sidebar. A dialog asks for just two things.
+
+    <Steps>
+      <Step title="Enter a name and domain">
+        Type the brand **Name** (for example `Acme`) and its **Domain** (for example `acme.com`).
+      </Step>
+      <Step title="Add the website">
+        Click **Add website**. MentionScout analyzes the site, suggests competitors, and drafts prompts to monitor.
+      </Step>
+      <Step title="Review in Brand Hub">
+        You land in the [Brand Hub](/setup/brand-hub) onboarding, where the analysis fills in your brand profile, competitors, and starter prompts.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Detailed add">
+    The full form at `/websites/create` lets you set everything up front. It captures:
+
+    - **Name** and **Domain** (required).
+    - **Brand name** if it differs from the website name.
+    - **Brand aliases**: alternate spellings, product names, ticker symbols, and the like, separated by commas or new lines. MentionScout uses these to detect mentions in AI responses.
+    - **Description** of what the company does.
+    - **Country** and **Language**, used as the default region for prompts.
+
+    Click **Add website** to save. You can refine any of these later from **Edit** or the [Brand Hub](/setup/brand-hub).
+  </Tab>
+</Tabs>
+
+## Switch the active website
+
+The website switcher sits at the top of the sidebar and shows your current website. Click it to open a **Websites** menu listing every website in the workspace, with a check next to the active one.
+
+- Select any website to switch to it. The app reloads in that website's context, so prompts, mentions, citations, and analytics all reflect the new selection.
+- Click **Add website** to open the quick add dialog.
+- Click **Manage websites** to jump to the full list.
+
+<Note>
+You can also switch from the list itself: click a website name, or choose **Switch to website** from its **...** menu.
+</Note>
+
+## Edit a website
+
+From a website's **...** menu choose **Edit**, or open the [Brand Hub](/setup/brand-hub) for deeper brand settings. The edit form lets you change the **Name**, **Domain**, **Brand name**, **Brand aliases**, and **Description**. Click **Save changes** to apply them; MentionScout makes that website active and takes you to its dashboard so you can see the change.
+
+## Delete a website
+
+To remove a website, choose **Delete** from its **...** menu (or **Delete website** on the edit form) and confirm.
+
+<Warning>
+Deleting a website permanently removes it and all of its data: competitors, prompts, runs, mentions, citations, social monitors, personas, site pages, and crawler analytics. This cannot be undone.
+</Warning>
+
+If you delete the website you currently have active, MentionScout switches you to another website in the workspace (preferring one that is already `Ready`). If none remain, add a new website to keep tracking your AI visibility.
+
+## Workspaces
+
+A workspace is the container that holds your websites. Every website you add belongs to your current workspace, and the websites list and switcher only show websites from that workspace. When you select a website, MentionScout also moves you into that website's workspace, so the brand you are viewing and the workspace around it always stay in sync.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Brand Hub" icon="wand-sparkles" href="/setup/brand-hub">
+    Refine the brand profile, aliases, and analysis behind a website.
+  </Card>
+  <Card title="Competitors" icon="users" href="/setup/competitors">
+    Manage the rival brands MentionScout compares you against.
+  </Card>
+  <Card title="Prompts" icon="message-square-text" href="/ai-visibility/prompts">
+    Set up the questions MentionScout runs against AI answer engines.
+  </Card>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Add your first website and get tracking end to end.
+  </Card>
+</CardGroup>

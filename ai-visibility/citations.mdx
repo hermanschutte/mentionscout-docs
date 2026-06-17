@@ -1,0 +1,110 @@
+---
+title: "Citations"
+description: "The URLs AI answers actually point to when responding to your prompts."
+icon: "quote"
+---
+
+When an AI answer engine responds to one of your prompts, it often links to the pages it drew from. The **Citations** page collects every one of those linked URLs, so you can see which domains AI answers credit as sources, and how often your own domain is among them.
+
+<Frame caption="The Citations page: a Top domains rollup over a feed of recent cited URLs.">
+  <img src="/images/app/citations.png" alt="The MentionScout Citations page showing a Top domains table and a Recent citations feed with citation, domain, LLM, brand, and date columns" />
+</Frame>
+
+## Citation vs mention
+
+These two measure different things, and the difference matters.
+
+- A **citation** is a URL an AI answer *links to as a source*. It is about being credited.
+- A **mention** is your brand, a competitor, or your domain being *named in the text* of an answer. It is about being talked about.
+
+An answer can cite you without naming you, name you without citing you, or both at once. Track being credited here, and track being named on the Mentions page.
+
+<Card title="Mentions" icon="message-square-quote" href="/ai-visibility/mentions">
+  See every time an AI answer named your brand, a competitor, or your domain.
+</Card>
+
+## Why owning more cited URLs matters
+
+Citations are the raw material AI answers are built from. When an engine credits a page, it is telling you which sources shaped its reply, and a page you own is a source you control.
+
+The more of those cited URLs belong to your domain, the more influence you have over what AI answers say about your space, and the more chances a reader has to click through to you. Use the **Top domains** table to see who currently owns the sources in your category, then work to earn citations on the pages where a competitor's domain shows up but yours does not.
+
+## Top domains
+
+The **Top domains** table rolls up every cited URL by domain, so you can see at a glance which sites AI answers lean on most.
+
+<AccordionGroup>
+  <Accordion title="Domain" icon="globe">
+    The cited domain, shown with its favicon. A **Yours** badge marks your own tracked domain, and a **Competitor** badge marks a domain you track as a competitor, so your sites and rivals stand out in the list.
+  </Accordion>
+  <Accordion title="Citations" icon="hashtag">
+    How many times that domain was cited across the selected time range. Click the column header to sort. The table opens sorted by citation count, highest first.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Scan for domains with a **Competitor** badge and a high count but no **Yours** badge nearby. Those are the sources AI answers trust in your space that you have not yet earned a place in.
+</Tip>
+
+## Recent citations
+
+Below the rollup, the **Recent citations** feed lists individual cited URLs, newest first, so you can read exactly what each answer pointed to.
+
+<AccordionGroup>
+  <Accordion title="Citation" icon="quote">
+    The cited page's title, or its URL when no title is available, shown with the domain favicon. Click the title to open the run the citation came from and read the full answer in context. Click the external-link icon to open the cited page itself in a new tab. A short snippet of the page appears underneath, and the tracked prompt that produced the answer shows as `Prompt: ...`.
+  </Accordion>
+  <Accordion title="Domain" icon="globe">
+    The domain of the cited URL.
+  </Accordion>
+  <Accordion title="LLM" icon="sparkles">
+    The AI answer engine that cited the page, such as ChatGPT, Claude, Gemini, Perplexity, Grok, Google AI Overviews, or Google AI Mode, shown with its logo.
+  </Accordion>
+  <Accordion title="Brand" icon="building">
+    Whose page it is. A **Your domain** badge marks a citation to your own site, a competitor's name marks a citation to a tracked rival, and a muted `n/a` marks any other domain.
+  </Accordion>
+  <Accordion title="Date" icon="calendar">
+    When the citation was collected, down to the minute. Click the column header to sort. The feed opens sorted by date, newest first.
+  </Accordion>
+</AccordionGroup>
+
+## Filter and sort
+
+The toolbar above the **Recent citations** feed lets you narrow it to what you care about.
+
+<Steps>
+  <Step title="Filter by domain">
+    Open the **Domain** filter and pick one or more domains to keep only citations pointing to those sites.
+  </Step>
+  <Step title="Filter by LLM">
+    Open the **LLM** filter to focus on a single answer engine, or any combination of them.
+  </Step>
+  <Step title="Sort the feed">
+    Click the **Citations** header on the rollup or the **Date** header on the feed to reorder either table.
+  </Step>
+  <Step title="Reset or adjust columns">
+    Click **Reset** to clear active filters, or use the view options control to show and hide columns.
+  </Step>
+</Steps>
+
+## Change the time range
+
+The date dropdown at the top right controls both tables at once. Use it to switch between **All time**, **Last 7 days**, **Last 30 days**, and **Last 90 days**. Narrowing the range is the quickest way to see whether a recent push earned you new citations.
+
+<Note>
+  Citations are collected from completed runs. If a table is empty, run one of your tracked prompts first, then come back once the runs finish.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Mentions" icon="message-square-quote" href="/ai-visibility/mentions">
+    Track where AI answers name you, not just where they link to you.
+  </Card>
+  <Card title="Sources" icon="newspaper" href="/community/sources">
+    See the wider web of pages that feed what AI answers say about you.
+  </Card>
+  <Card title="Concepts" icon="book" href="/concepts">
+    How prompts, runs, mentions, and citations fit together.
+  </Card>
+</CardGroup>

@@ -1,0 +1,89 @@
+---
+title: "Mentions"
+description: "Every time an AI answer named your brand, a competitor, or your domain."
+icon: "message-square-quote"
+---
+
+A mention is any moment an AI answer engine names your brand, one of your competitors, or your domain inside its reply. The **Mentions** page is the running feed of every one MentionScout has detected, newest first, so you can see exactly how you and your rivals get talked about in AI answers.
+
+<Frame caption="The Mentions feed, with each brand highlighted inline and filtered by sentiment.">
+  <img src="/images/app/mentions.png" alt="The MentionScout Mentions page showing recent mentions with brand, LLM, sentiment, and date columns" />
+</Frame>
+
+## Mention vs citation
+
+These two are easy to confuse, so it helps to be precise.
+
+- A **mention** is your brand, a competitor, or your domain being *named in the text* of an AI answer. It is about being talked about.
+- A **citation** is your domain being *linked as a source* the answer drew from. It is about being credited.
+
+An answer can mention you without citing you, cite you without naming you, or both at once. Track being named here, and track being credited on the Citations page.
+
+<Card title="Citations" icon="link" href="/ai-visibility/citations">
+  See where your domain is linked as a source behind AI answers.
+</Card>
+
+## Where mentions come from
+
+Every mention is extracted from a completed run. When MentionScout runs one of your tracked prompts against an AI answer engine, it reads the answer and records each time your brand, a competitor, or your domain appears. Click the mention excerpt to open the exact run it came from and read the full answer in context.
+
+<Tip>
+  The feed shows your most recent mentions. The newest activity always sits at the top.
+</Tip>
+
+## What each column shows
+
+<AccordionGroup>
+  <Accordion title="Mention" icon="message-square-quote">
+    An excerpt of the answer with the matched name highlighted in place, so you can read how it was phrased at a glance. Your own brand is highlighted in violet and a competitor in amber. The tracked prompt that produced the answer appears underneath as `Prompt: ...`. Click the excerpt to open the full run.
+  </Accordion>
+  <Accordion title="Brand" icon="building">
+    Who was named. Either **Your brand** or the competitor's name, each shown with its logo so you can scan the feed quickly.
+  </Accordion>
+  <Accordion title="LLM" icon="sparkles">
+    The AI answer engine the mention came from, such as ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, or Google AI Mode, shown with its logo.
+  </Accordion>
+  <Accordion title="Sentiment" icon="smile">
+    How the mention reads in context: `Positive`, `Neutral`, or `Negative`. A muted `n/a` means sentiment was not scored for that mention.
+  </Accordion>
+  <Accordion title="Date" icon="calendar">
+    When the mention was detected, down to the minute.
+  </Accordion>
+</AccordionGroup>
+
+## Filter and sort the feed
+
+The toolbar above the table lets you narrow the feed to what you care about.
+
+<Steps>
+  <Step title="Search the text">
+    Type in the **Filter by mention text** box to keep only mentions whose excerpt contains your words.
+  </Step>
+  <Step title="Filter by sentiment">
+    Open the **Sentiment** filter and pick any combination of **Positive**, **Neutral**, and **Negative** to focus on how you are being framed.
+  </Step>
+  <Step title="Sort by recency">
+    Click the **Mention** or **Date** column header to sort. The feed opens sorted by date, newest first.
+  </Step>
+  <Step title="Reset or adjust columns">
+    Click **Reset** to clear active filters, or use the view options control to show and hide columns.
+  </Step>
+</Steps>
+
+<Note>
+  Negative or neutral mentions are where the work is. They show where an AI answer frames you weakly or omits you while naming a competitor, which is exactly the kind of gap worth closing.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Runs" icon="play" href="/ai-visibility/runs">
+    Open the full answer behind any mention, including every engine and prompt run.
+  </Card>
+  <Card title="Citations" icon="link" href="/ai-visibility/citations">
+    Track where your domain is credited as a source, not just named.
+  </Card>
+  <Card title="Concepts" icon="book" href="/concepts">
+    How prompts, runs, mentions, and citations fit together.
+  </Card>
+</CardGroup>

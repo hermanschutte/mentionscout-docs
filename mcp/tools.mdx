@@ -1,0 +1,173 @@
+---
+title: "MCP tools and prompts"
+description: "The tools and prompts an MCP client can call on your MentionScout data."
+icon: "wrench"
+---
+
+The MentionScout MCP server exposes your visibility data to any MCP client, such as Claude, a coding agent, or your own scripts. This page lists every tool the server offers, what each one returns, and which tools can change your data.
+
+## How access works
+
+Every tool runs as you and only sees the websites in your own workspaces. Two kinds of token decide what a tool can do:
+
+- A **read-only** token can call every tool that reads data. That is all but two of them.
+- A **read & write** token additionally allows `create-prompt` and `update-prompt`, which add or edit tracked prompts.
+
+<Warning>
+Only `create-prompt` and `update-prompt` change anything. Every other tool is read-only and cannot modify your account. Use a read-only token unless you specifically want an agent to manage prompts.
+</Warning>
+
+<Card title="Set up the server and tokens" icon="plug" href="/mcp/overview">
+  How to connect a client and create read-only or read & write tokens.
+</Card>
+
+## Parameters most tools share
+
+A few parameters and response fields repeat across the read tools, so they are described once here rather than in every table.
+
+| Parameter | What it does |
+| --- | --- |
+| `website_id` | The website to scope to. Optional on almost every tool: when omitted it falls back to your currently selected website, or your only website. Call `list-websites` first to get valid IDs. |
+| `range_days` | A look-back window of `7`, `30`, or `90` days. On the overview, analytics, and gap tools it defaults to `30`. On the other list tools it is optional, and omitting it returns all time. |
+| `since` | An ISO 8601 timestamp. Returns only rows created at or after that moment, and overrides `range_days` when both are passed. Use it for "everything since my last check". |
+| `limit` | Caps how many rows come back. For most list tools the default is `50` and the maximum is `250`. |
+
+<Note>
+List tools return a `returned`, `total`, and `truncated` field alongside the rows, so you can tell when results were capped by `limit` and need a tighter filter.
+</Note>
+
+## Overview and digest
+
+High-level health and a one-call daily bundle.
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `get-visibility-overview` | Headline metrics for a website: visibility score, run counts, share of voice versus competitors, top cited domains, answer-gap count, and community source coverage. Includes `previous` and `delta` blocks comparing the window against the one before it. | `website_id`, `range_days` | Read |
+| `get-daily-digest` | A single monitoring bundle: brand and competitor mentions, new social mentions, the overview with period-over-period deltas, and answer gaps that newly opened, all since a timestamp. | `website_id`, `since`, `range_days`, `limit` | Read |
+| `get-brand-profile` | The brand context MentionScout tracks: brand terms, descriptions, industry, competitors, and audience personas. Useful for grounding suggestions. | `website_id` | Read |
+
+<Tip>
+`get-daily-digest` replaces three separate calls. Pass the time of your last check as `since` and it returns only what is new, with the smoothed visibility score still computed over `range_days` because a single day is too few runs to score reliably.
+</Tip>
+
+## Prompts
+
+Read and manage the tracked prompts MentionScout runs against the answer engines.
+
+| Tool | What it does | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-prompts` | Lists tracked prompts with their providers, intent, type, frequency, enabled state, and last run time. | `website_id`, `enabled`, `limit` | Read |
+| `create-prompt` | Creates a new tracked prompt. | `text` (required), `providers` (required), `intent`, `prompt_type`, `frequency`, `country`, `language`, `enabled`, `tags`, `website_id` | Read & write |
+| `update-prompt` | Edits an existing prompt. Only the fields you pass change; passing an empty `providers` array removes all providers. | `prompt_id` (required), `text`, `providers`, `intent`, `prompt_type`, `frequency`, `country`, `language`, `enabled` | Read & write |
+
+The `providers` field takes provider slugs, for example `openai` (ChatGPT), `anthropic` (Claude), `gemini` (Gemini), or `perplexity` (Perplexity). `create-prompt` respects your plan's prompt limit and returns an error if you are already at the cap.
+
+<Note>
+"Tracked prompts" here are the questions MentionScout runs on a schedule, managed on the [Prompts](/ai-visibility/prompts) page. They are different from the [MCP prompts](#guided-prompts) described lower on this page.
+</Note>
+
+## Runs
+
+A run is one prompt sent to one engine. These tools read the run log.
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-runs` | Prompt runs for a website, newest first. Includes both seed runs and fan-out sub-query runs. | `website_id`, `prompt_id`, `provider`, `range_days`, `since`, `limit`, `seed_only` | Read |
+| `get-run` | One run in full: the raw AI answer text, the sources it cited, and the brand and competitor mentions detected in it. | `run_id` (required) | Read |
+
+Pass `seed_only` as `true` to `list-runs` to exclude fan-out sub-query runs and see only the original prompt text. See [Query fan-out](/ai-visibility/query-fan-out) for how those sub-queries are generated.
+
+## Mentions and citations
+
+The parsed output of every run, rolled up across the website.
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-mentions` | Brand and competitor mentions found in AI answers, newest first. | `website_id`, `subject` (`own` or `competitor`), `provider`, `range_days`, `since`, `limit` | Read |
+| `list-citations` | The sources (URLs and domains) cited by AI answers, newest first, each flagged when it is your own domain or a competitor's. | `website_id`, `provider`, `range_days`, `since`, `limit` | Read |
+
+<CardGroup cols={2}>
+  <Card title="Mentions" icon="at-sign" href="/ai-visibility/mentions">
+    How mentions are detected and scored in the app.
+  </Card>
+  <Card title="Citations" icon="link" href="/ai-visibility/citations">
+    Which sources the engines cite when they answer.
+  </Card>
+</CardGroup>
+
+## Answer gap
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-answer-gaps` | Prompts where competitors are named but your brand is not, the highest-leverage visibility gaps to fix. Each gap carries `first_seen` and an `is_new` flag, so you can surface only newly opened gaps. | `website_id`, `range_days`, `limit` | Read |
+
+<Card title="Answer gap" icon="target" href="/ai-visibility/answer-gap">
+  How gaps are identified and how to close them.
+</Card>
+
+## Crawler
+
+Analytics on how AI bots crawl, cite, and drive clicks to your site.
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `get-crawler-analytics` | The Discovered to Crawled to Cited to Clicked funnel, which AI bots visit (each tagged as training, search index, or live user-browse), AI-referral clicks with top referrers and countries, pages crawled but never cited, cited-but-stale pages, errored crawls, and the robots.txt verdict per AI bot. | `website_id`, `range_days` | Read |
+| `list-crawler-pages` | Page-level crawl activity: each path with its visit count, last-crawled date, and last HTTP status, most-visited first. | `website_id`, `range_days`, `limit` | Read |
+
+<Card title="Crawler analytics" icon="bot" href="/ai-visibility/crawler-analytics">
+  The crawl-to-click funnel and what each stage means.
+</Card>
+
+## Community and social
+
+The wider web that feeds AI answers: cited community threads and social-listening conversations.
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-community-sources` | Community and user-generated threads (Reddit, Hacker News, Quora, Stack Overflow, YouTube) that AI answers cite, with brand and competitor flags and sentiment. | `website_id`, `source_type`, `subject` (`you`, `competitor`, or `both`), `range_days`, `limit` | Read |
+| `list-source-gaps` | Community threads that AI cites which mention competitors but not your brand, ranked as places to go engage. | `website_id`, `range_days`, `limit` | Read |
+| `list-social-mentions` | Social-listening mentions of your brand or competitors from Reddit, Hacker News, and Bluesky, with sentiment, relevance, and whether an AI answer already cites the thread. | `website_id`, `source` (`reddit`, `hackernews`, `bluesky`), `subject` (`you` or `competitor`), `sentiment`, `min_relevance`, `since`, `range_days`, `limit` | Read |
+
+<Note>
+On `list-social-mentions`, `since` is a discovery cursor over when a mention was found, while `range_days` is a window over when the conversation was posted. They answer different questions, so they filter different fields.
+</Note>
+
+<CardGroup cols={2}>
+  <Card title="Sources" icon="quote" href="/community/sources">
+    Community threads AI cites for your brand.
+  </Card>
+  <Card title="Listening" icon="ear" href="/community/listening">
+    Native social listening across Reddit, Hacker News, and Bluesky.
+  </Card>
+</CardGroup>
+
+## Websites
+
+| Tool | What it returns | Key parameters | Access |
+| --- | --- | --- | --- |
+| `list-websites` | The websites you can access, with their IDs, domains, workspaces, and which one is currently selected. | None | Read |
+
+<Tip>
+Call `list-websites` first. It gives you the `website_id` every other tool accepts, and it shows which website is current so you know what the other tools default to.
+</Tip>
+
+## Guided prompts
+
+Alongside tools, the server ships two MCP prompts: ready-made instructions your client can run that chain several tools together for you. They are workflows, not data, so they never change anything on their own. Both take an optional `website_id` argument and default to your current website.
+
+<AccordionGroup>
+  <Accordion title="improve-my-aeo" icon="wand-sparkles">
+    Analyses your visibility data and suggests concrete improvements to your site. It calls `get-brand-profile`, `list-answer-gaps`, `list-mentions`, and `list-citations`, inspects your site's content where the client can see it, and produces a prioritised list of specific changes (new or rewritten pages, FAQs, comparison content, metadata, internal links), each tied to a real answer gap or under-cited topic.
+
+    **Argument:** `website_id` (optional).
+  </Accordion>
+  <Accordion title="draft-prompts" icon="message-square-plus">
+    Proposes new tracked prompts to add. It calls `get-brand-profile` and `list-prompts` to avoid duplicates, then `list-answer-gaps` to find weak spots, and drafts 8 to 15 realistic prompts a real buyer would ask, grouped by intent. It then asks which to create and, for each you approve, calls `create-prompt`.
+
+    **Argument:** `website_id` (optional). Creating the approved prompts needs a read & write token.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Connect a client" icon="plug" href="/mcp/overview">
+  Set up the MCP server, pick a token type, and start calling these tools.
+</Card>
