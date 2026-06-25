@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "MentionScout Docs",
   "colors": {
-    "primary": "#8200DB",
-    "light": "#9743ED",
-    "dark": "#6C00BE"
+    "primary": "#0F766E",
+    "light": "#14B8A6",
+    "dark": "#115E59"
   },
   "fonts": {
     "family": "Inter"

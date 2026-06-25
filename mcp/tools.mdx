@@ -10,11 +10,11 @@ The MentionScout MCP server exposes your visibility data to any MCP client, such
 
 Every tool runs as you and only sees the websites in your own workspaces. Two kinds of token decide what a tool can do:
 
-- A **read-only** token can call every tool that reads data. That is all but two of them.
-- A **read & write** token additionally allows `create-prompt` and `update-prompt`, which add or edit tracked prompts.
+- A **read-only** token can call every tool that reads data. That is all but the five write tools.
+- A **read & write** token additionally allows the write tools `create-prompt`, `update-prompt`, `create-competitor`, `update-competitor`, and `remove-competitor`, which add or edit your tracked prompts and competitors.
 
 <Warning>
-Only `create-prompt` and `update-prompt` change anything. Every other tool is read-only and cannot modify your account. Use a read-only token unless you specifically want an agent to manage prompts.
+Only those five write tools change anything. Every other tool is read-only and cannot modify your account. Use a read-only token unless you specifically want an agent to manage your prompts and competitors.
 </Warning>
 
 <Card title="Set up the server and tokens" icon="plug" href="/mcp/overview">
@@ -64,6 +64,20 @@ The `providers` field takes provider slugs, for example `openai` (ChatGPT), `ant
 
 <Note>
 "Tracked prompts" here are the questions MentionScout runs on a schedule, managed on the [Prompts](/ai-visibility/prompts) page. They are different from the [MCP prompts](#guided-prompts) described lower on this page.
+</Note>
+
+## Competitors
+
+Read and manage the competitors in a website's brand profile. To edit or remove one you need its ID, which `get-brand-profile` returns.
+
+| Tool | What it does | Key parameters | Access |
+| --- | --- | --- | --- |
+| `create-competitor` | Adds a competitor to a website's brand profile. | `name` (required), `domain`, `aliases`, `description`, `website_id` | Read & write |
+| `update-competitor` | Edits an existing competitor. Only the fields you pass change; an empty `aliases` array clears all aliases. | `competitor_id` (required), `name`, `domain`, `aliases`, `description` | Read & write |
+| `remove-competitor` | Removes a competitor from the brand profile. | `competitor_id` (required) | Read & write |
+
+<Note>
+Competitors are part of the brand profile you set up on the [Competitors](/setup/competitors) page. Read the current list with `get-brand-profile`, which returns each competitor's ID.
 </Note>
 
 ## Runs
